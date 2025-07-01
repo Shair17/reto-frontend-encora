@@ -16,7 +16,11 @@ import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
 // types
 import type { RedditPost } from '@/types/reddit';
 
-defineProps<{ selectedPostId?: string }>();
+interface Props {
+  selectedPostId?: string;
+}
+
+defineProps<Props>();
 
 const postsStore = usePostsStore();
 

@@ -12,13 +12,15 @@ import { getFromNow } from '@/utils/date';
 // types
 import type { RedditPost } from '@/types/reddit';
 
-const props = defineProps<{
+interface Props {
   post: RedditPost;
   selected?: boolean;
   read?: boolean;
   onPostPress?: () => void;
   onPostDelete?: () => void;
-}>();
+}
+
+const props = defineProps<Props>();
 
 const relativeTime = computed(() => getFromNow(props.post.created_utc));
 

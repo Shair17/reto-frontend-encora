@@ -9,9 +9,11 @@ const emit = defineEmits<{
   (e: 'load'): void;
 }>();
 
-const props = defineProps<{
+interface Props {
   disabled?: boolean;
-}>();
+}
+
+const props = defineProps<Props>();
 
 const trigger = ref<HTMLElement | null>(null);
 let observer: IntersectionObserver | null = null;

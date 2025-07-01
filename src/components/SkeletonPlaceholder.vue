@@ -1,6 +1,8 @@
 <script setup lang="ts">
+// core
 import type { HTMLAttributes } from 'vue';
 
+// utils
 import { cn } from '@/utils/cn';
 
 interface SkeletonProps {

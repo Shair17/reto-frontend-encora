@@ -19,7 +19,11 @@ import { getFromNow } from '@/utils/date';
 // types
 import type { RedditPostDetail } from '@/types/reddit';
 
-const props = defineProps<{ postId: string }>();
+interface Props {
+  postId: string;
+}
+
+const props = defineProps<Props>();
 
 const router = useRouter();
 const postStore = usePostsStore();

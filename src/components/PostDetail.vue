@@ -1,11 +1,14 @@
 <script setup lang="ts">
 // core
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
 
 // composables
+import { usePostsStore } from '@/stores/posts';
 import { useGetRedditPostDetail } from '@/composables/useGetRedditPostDetail';
 
 // components
+import { toast } from 'vue-sonner';
 import AppButton from './AppButton.vue';
 import SkeletonPlaceholder from './SkeletonPlaceholder.vue';
 
@@ -18,11 +21,14 @@ import type { RedditPostDetail } from '@/types/reddit';
 
 const props = defineProps<{ postId: string }>();
 
+const router = useRouter();
+const postStore = usePostsStore();
 const redditPostDetailQuery = useGetRedditPostDetail(props.postId);
 
 const isLoading = computed(() => redditPostDetailQuery.isLoading.value);
 const isError = computed(() => redditPostDetailQuery.isError.value);
 const post = computed(() => redditPostDetailQuery.data.value);
+const isDeleted = computed(() => postStore.isDeleted(props.postId));
 
 async function onRetry() {
   await redditPostDetailQuery.refetch();
@@ -49,11 +55,26 @@ onMounted(() => {
   // Scroll to top with smooth behavior on component mount and route change
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+watchEffect(() => {
+  if (!isLoading.value && !post.value) {
+    router.replace('/');
+    return;
+  }
+
+  if (post.value && isDeleted.value) {
+    toast.info('Esta publicación fue descartada', {
+      description: 'Redirigiéndote al inicio...',
+      duration: 3000,
+    });
+    router.replace('/');
+  }
+});
 </script>
 
 <template>
   <article class="animate-fade-in space-y-4 rounded-xl transition-all p-4 sm:p-6 bg-white">
-    <template v-if="isLoading">
+    <template v-if="isLoading || isDeleted">
       <SkeletonPlaceholder class="h-6 rounded-xl" />
 
       <SkeletonPlaceholder class="h-5 rounded-xl" />

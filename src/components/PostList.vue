@@ -5,6 +5,7 @@ import { toast } from 'vue-sonner';
 
 // composables
 import { usePostsStore } from '@/stores/posts';
+import { useGreeting } from '@/composables/useGreeting';
 import { useGetInfinityRedditTops } from '@/composables/useGetInfinityRedditTops';
 
 // components
@@ -25,13 +26,13 @@ defineProps<Props>();
 const postsStore = usePostsStore();
 
 const infiniteRedditTopsQuery = useGetInfinityRedditTops();
-
 const allPosts = computed<RedditPost[]>(
   () => infiniteRedditTopsQuery.data?.value?.pages.flatMap((page) => page.posts) ?? [],
 );
 
-const isLimitReached = computed(() => allPosts.value.length >= infiniteRedditTopsQuery.maxItems);
+const greeting = useGreeting();
 
+const isLimitReached = computed(() => allPosts.value.length >= infiniteRedditTopsQuery.maxItems);
 const allPostsAreDeleted = computed(
   () => isLimitReached.value && allPosts.value.every((post) => postsStore.isDeleted(post.id)),
 );
@@ -83,7 +84,7 @@ watchEffect(() => {
 
 <template>
   <div class="flex justify-between items-center gap-2">
-    <h1 class="text-2xl font-bold">Publicaciones</h1>
+    <h1 class="text-2xl font-bold">{{ greeting }}</h1>
 
     <AppButton
       :variant="allPostsAreDeleted ? 'default' : 'destructive'"

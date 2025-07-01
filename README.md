@@ -1,6 +1,6 @@
-# 📰 Reto Técnico Reddit
+# 📰 Reddit Technical Challenge
 
-> An application built with Vue 3 to browse top Reddit posts. It supports infinite scrolling, detailed post views, marking posts as read or dismissed, and provides a smooth single-page application (SPA) experience.
+An application built with Vue 3 to browse top Reddit posts. It supports infinite scrolling, detailed post views, marking posts as read or dismissed, and provides a smooth single-page application (SPA) experience.
 
 ![screenshot](https://github.com/Shair17/reto-frontend-encora/blob/dev/public/preview.png?raw=true)
 

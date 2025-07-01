@@ -1,5 +1,6 @@
 // styles
 import './assets/main.css';
+import 'vue-sonner/style.css';
 
 // core
 import { createApp } from 'vue';

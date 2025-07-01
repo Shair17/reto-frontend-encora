@@ -2,7 +2,7 @@
 
 > An application built with Vue 3 to browse top Reddit posts. It supports infinite scrolling, detailed post views, marking posts as read or dismissed, and provides a smooth single-page application (SPA) experience.
 
-![screenshot](https://raw.githubusercontent.com/Shair17/reto-frontend-encora/refs/heads/dev/public/preview.png)
+![screenshot](https://github.com/Shair17/reto-frontend-encora/blob/dev/public/preview.png?raw=true)
 
 ---
 

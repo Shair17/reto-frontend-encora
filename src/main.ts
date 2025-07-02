@@ -1,14 +1,49 @@
-import './assets/main.css'
+// styles
+import './assets/main.css';
+import 'vue-sonner/style.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+// core
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-import App from './App.vue'
-import router from './router'
+// plugins
+import { VueQueryPlugin } from '@tanstack/vue-query';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 
-const app = createApp(App)
+// components
+import App from './App.vue';
+import router from './router';
 
-app.use(createPinia())
-app.use(router)
+// create app
+const app = createApp(App);
 
-app.mount('#app')
+// create pinia
+const pinia = createPinia();
+
+// pinia plugins
+pinia.use(piniaPluginPersistedstate);
+
+// app plugins
+app.use(pinia);
+app.use(router);
+app.use(VueQueryPlugin, {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  },
+});
+
+// hooks
+router.beforeEach((to, from, next) => {
+  if (document.startViewTransition) {
+    document.startViewTransition(() => next());
+  } else {
+    next();
+  }
+});
+
+// app mount
+app.mount('#app');

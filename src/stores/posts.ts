@@ -64,6 +64,7 @@ export const usePostsStore = defineStore(
     };
   },
   {
+    // @ts-ignore
     persist: {
       storage: localStorage,
     },

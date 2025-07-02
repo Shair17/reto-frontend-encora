@@ -38,24 +38,6 @@ npm run test:unit
 
 ---
 
-### 🧪 Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
----
-
 ### 🐙 Lint with [ESLint](https://eslint.org/)
 
 ```sh
@@ -74,19 +56,18 @@ npm run format
 
 ## 🚀 Technologies
 
-| Technology     | Description                                           |
-| -------------- | ----------------------------------------------------- |
-| ⚡ Vue 3       | Frontend framework with the Composition API           |
-| ⚡ Vue Router  | Routing library for Vue.js for building SPAs          |
-| 🎨 TailwindCSS | Utility-first CSS framework for responsive design     |
-| ☁️ Vue Query   | Remote data handling and smart caching                |
-| 🧠 Pinia       | Global state management with persistence              |
-| 🍞 Vue Sonner  | Toast-style notification system                       |
-| 🕓 dayjs       | Lightweight date library for readable relative times  |
-| 📡 Axios       | HTTP client for consuming the Reddit API              |
-| 🧹 Prettier    | Code formatter to ensure consistent style             |
-| 🧪 Vitest      | Modern unit testing framework for Vue                 |
-| 🧭 Cypress     | End-to-end testing tool for full user flow validation |
+| Technology     | Description                                          |
+| -------------- | ---------------------------------------------------- |
+| ⚡ Vue 3       | Frontend framework with the Composition API          |
+| ⚡ Vue Router  | Routing library for Vue.js for building SPAs         |
+| 🎨 TailwindCSS | Utility-first CSS framework for responsive design    |
+| ☁️ Vue Query   | Remote data handling and smart caching               |
+| 🧠 Pinia       | Global state management with persistence             |
+| 🍞 Vue Sonner  | Toast-style notification system                      |
+| 🕓 dayjs       | Lightweight date library for readable relative times |
+| 📡 Axios       | HTTP client for consuming the Reddit API             |
+| 🧹 Prettier    | Code formatter to ensure consistent style            |
+| 🧪 Vitest      | Modern unit testing framework for Vue                |
 
 ---
 

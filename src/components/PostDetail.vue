@@ -111,7 +111,7 @@ watchEffect(() => {
         <video
           :src="post.media.reddit_video.fallback_url"
           controls
-          class="rounded-md w-full max-h-[480px] border"
+          class="rounded-md w-full max-h-[480px] border border-neutral-200 border-dashed"
           autoplay
         />
         <div class="flex justify-end">
